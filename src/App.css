@@ -1,38 +1,121 @@
-.App {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #282c34 30%, #444 90%);
+  color: #f0f0f0;
+}
+
+.app {
   text-align: center;
+  padding: 2em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 3em;
+  color: #e74c3c;
+  margin-bottom: 0.5em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.joke-display {
+  margin-top: 1em;
+  padding: 1em;
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 8px;
+  font-size: 1.2em;
+  min-height: 80px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  transition: opacity 0.5s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+.random-joke-button, .category-joke-button {
+  margin: 1em;
+  padding: 0.8em 1.5em;
+  font-size: 1.1em;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.random-joke-button:hover, .category-joke-button:hover {
+  background-color: #c0392b;
+}
+
+.category-select {
+  margin: 1em 0;
+  font-size: 1em;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-joke-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.category-joke-button:not(:disabled) {
+  animation: buttonPop 0.5s ease;
+}
+
+@keyframes buttonPop {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Custom styles for React Select */
+.category-select .react-select__control {
+  background-color: #444;
+  border: 1px solid #555;
+  color: #f0f0f0;
+}
+
+.category-select .react-select__menu {
+  background-color: #444;
+  color: #f0f0f0;
+}
+
+.category-select .react-select__option {
+  background-color: #444;
+  color: #f0f0f0;
+}
+
+.category-select .react-select__option--is-selected {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.category-select .react-select__option--is-focused {
+  background-color: #555;
+}
+
+.category-select .react-select__single-value {
+  color: #f0f0f0;
+}
+
+.category-joke-button.disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.category-joke-button:not(.disabled) {
+  animation: buttonPop 0.5s ease;
+}
+
+.category-joke-button.disabled:hover {
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
 }
